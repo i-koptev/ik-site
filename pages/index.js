@@ -8,7 +8,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className={styles.main}>
+            <main>
                 <h1>Welcome to my site!</h1>
             </main>
         </div>
