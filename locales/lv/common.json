@@ -1,0 +1,17 @@
+{
+    "sidebarMenuTitle": "Malas menu",
+    "frontPage-heading": "Galvenā lapa",
+    "title": "Sveika pasaule!",
+    "variable-example": "Izmantojam vars {{count}}",
+    "menuItem-home": "Galvena",
+    "menuItem-about": "Par Mums",
+    "menuItem-contacts": "Kontakti",
+    "menuItem-services": "Servisi",
+    "menuItem-programming": "Programēšana",
+    "menuItem-design": "Dizains",
+    "menuItem-dev": "Izstrāde",
+    "menuItem-works": "Mūsu darbi",
+    "blog": "Blogs",
+    "contactFormErrorFieldIsRequired": "Šis lauks ir obligāts.",
+    "contactFormErrorMessageMustBeAtLeast8": "Jābūt vismaz 8 rakstzīmēm."
+}

@@ -1,0 +1,17 @@
+{
+    "sidebarMenuTitle": "Боковое меню",
+    "frontPage-heading": "Главная страница",
+    "title": "Привет, мир!",
+    "variable-example": "Используем переменную {{count}}",
+    "menuItem-home": "Главная",
+    "menuItem-about": "О Нас",
+    "menuItem-contacts": "Контакты",
+    "menuItem-services": "Услуги",
+    "menuItem-programming": "Программирование",
+    "menuItem-design": "Дизайн",
+    "menuItem-dev": "Разработка",
+    "menuItem-works": "Наши работы",
+    "blog": "Блог",
+    "contactFormErrorFieldIsRequired": "Это поле является обязательным.",
+    "contactFormErrorMessageMustBeAtLeast8": "Должно быть минимум 8 сиволов."
+}

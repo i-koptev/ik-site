@@ -1,6 +1,8 @@
 import Link from "next/link"
 import Head from "next/head"
 
+import useTranslation from "next-translate/useTranslation"
+
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
@@ -21,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 export default function IndexPage() {
+    const { t, lang } = useTranslation("common")
     const classes = useStyles()
 
     return (
@@ -31,6 +34,9 @@ export default function IndexPage() {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <main>
+                    <Typography variant="h3" component="h1" gutterBottom>
+                        {t("title")}
+                    </Typography>
                     <Typography variant="h3" component="h1" gutterBottom>
                         Да пребудет с вами сила...
                     </Typography>

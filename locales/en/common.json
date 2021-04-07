@@ -1,0 +1,17 @@
+{
+    "sidebarMenuTitle": "Sidebar menu",
+    "frontPage-heading": "Front Page",
+    "title": "Hello world!",
+    "variable-example": "Using a variable {{count}}",
+    "menuItem-home": "Home",
+    "menuItem-about": "About",
+    "menuItem-contacts": "Contacts",
+    "menuItem-services": "Services",
+    "menuItem-programming": "Programming",
+    "menuItem-design": "Design",
+    "menuItem-dev": "Development",
+    "menuItem-works": "Our works",
+    "blog": "Blog",
+    "contactFormErrorFieldIsRequired": "This field is required.",
+    "contactFormErrorMessageMustBeAtLeast8": "Must be at least 8 characters long. "
+}
