@@ -47,3 +47,36 @@ $ touch .eslintrc.json
 $ touch .prettierrc
 $ touch .prettierignore
 ```
+
+## Material-UI
+
+```bash
+$ yarn add @material-ui/core
+$ yarn add @material-ui/icons
+```
+
+Если возникают проблемы с сетью:
+
+```bash
+$ yarn add @material-ui/icons --network-timeout 1000000
+```
+
+Поддержка Typescript - используем компоненты Material-UI на Typescript
+
+```bash
+$ touch tsconfig.json
+$ yarn add --dev typescript @types/node @types/react @types/react-dom
+
+```
+
+По руководствам настраиваем поддержку Material UI в NextJS.
+
+Github mui-org/material-ui https://github.com/mui-org/material-ui/tree/master/examples/nextjs
+Next.js with Material-UI- https://itnext.io/next-js-with-material-ui-7a7f6485f671
+
+```bash
+$ rm _app.js
+$ touch _app.tsx
+$ touch _document.tsx
+$ touch theme.ts
+```
