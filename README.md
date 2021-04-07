@@ -25,7 +25,25 @@ $ npx create-next-app .
 Локально из папки проекта:
 
 ```bash
-git remote add origin https://github.com/i-koptev/ik-site.git
-git branch -M main
-git push -u origin main
+$ git remote add origin https://github.com/i-koptev/ik-site.git
+$ git branch -M main
+$ git push -u origin main
+```
+
+## Чистка и создание файлов настроек
+
+Удаляем ненужные папки и файлы
+
+```bash
+$ rm -rf ./styles
+$ rm -rf /pages/api
+```
+
+Копируем из предыдущего проекта файлы настроек
+
+```bash
+$ touch .nvmrc
+$ touch .eslintrc.json
+$ touch .prettierrc
+$ touch .prettierignore
 ```
