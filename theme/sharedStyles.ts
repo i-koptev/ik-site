@@ -48,7 +48,7 @@ export const topbarHeadroomStyles = {
     langSwitcherButtonHoverColor: `${mainColor}`,
     langSwitcherButtonHoverBackgroundColor: `transparent`,
     langSwitcherButtonHoverOutline: `2px solid ${mainColor.fade(0.75)}`,
-    burgerColor: `${mainColor.fade(0.25)}`,
+    burgerColor: `${white.fade(0.25)}`,
 
     langSwitcherButtonPinnedColor: "#777",
 }
