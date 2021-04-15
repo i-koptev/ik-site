@@ -62,10 +62,21 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-const Contacts = () => {
+const Contacts = (props) => {
+    const { handleThemeChange } = props
+    const theme = useTheme()
+    const isDarkTheme = theme.palette.type === "dark"
+
+    // const matches = useMediaQuery("(min-width:1280px)")
+    // const matches2 = useMediaQuery(theme.breakpoints.up("sm"))
+
     const classes = useStyles()
     return (
-        <MainLayout backgroundIsDark pageSpacing={pageSpacing}>
+        <MainLayout
+            backgroundIsDark
+            pageSpacing={pageSpacing}
+            handleThemeChange={handleThemeChange}
+        >
             <section
                 className={clsx(
                     "mainLayoutFirstChild",

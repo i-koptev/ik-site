@@ -15,7 +15,6 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Box from "@material-ui/core/Box"
 import Button from "@material-ui/core/Button"
-import Switch from "@material-ui/core/Switch"
 import SvgIcon from "@material-ui/core/SvgIcon"
 
 import Icon from "@material-ui/core/Icon"
@@ -110,12 +109,14 @@ const useStyles = makeStyles((theme) =>
 // },
 
 export default function IndexPage(props) {
-    const classes = useStyles()
-    const theme = useTheme()
-    const isDarkTheme = theme.palette.type === "dark"
     const { handleThemeChange } = props
+
+    const theme = useTheme()
+    const classes = useStyles()
+    const isDarkTheme = theme.palette.type === "dark"
     const matches = useMediaQuery("(min-width:1280px)")
     const matches2 = useMediaQuery(theme.breakpoints.up("sm"))
+    const pageSpacing = 4
 
     const iconArr = [
         <SettingsIcon />,
@@ -130,7 +131,10 @@ export default function IndexPage(props) {
     ]
 
     return (
-        <MainLayout>
+        <MainLayout
+            pageSpacing={pageSpacing}
+            handleThemeChange={handleThemeChange}
+        >
             {/* <MainLayout backgroundIsDark> */}
             <Head>
                 <title>Koptef | Всегда...</title>
@@ -138,19 +142,15 @@ export default function IndexPage(props) {
             </Head>
             <Container maxWidth="lg" className={classes.root}>
                 <Grid container justify="center" spacing={4}>
-                    <Grid item xs={6}>
-                        <Typography variant="h3" component="h1" gutterBottom>
+                    <Grid item xs={12}>
+                        <Typography
+                            variant="h3"
+                            component="h1"
+                            gutterBottom
+                            align="center"
+                        >
                             IconCard component
                         </Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Link href="/">Back</Link>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Switch
-                            checked={isDarkTheme}
-                            onChange={handleThemeChange}
-                        />
                     </Grid>
                 </Grid>
 

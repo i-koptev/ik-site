@@ -13,6 +13,10 @@ import {
 import { AppBar, Toolbar, Badge, Hidden, IconButton } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import Button from "@material-ui/core/Button"
+import Switch from "@material-ui/core/Switch"
+import Brightness4SharpIcon from "@material-ui/icons/Brightness4Sharp"
+import Brightness5SharpIcon from "@material-ui/icons/Brightness5Sharp"
+
 import MenuIcon from "@material-ui/icons/Menu"
 import SvgIcon from "@material-ui/core/SvgIcon"
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined"
@@ -32,6 +36,14 @@ import {
 import cmsdata from "../../../../cms"
 
 const { nodes: menuItems } = cmsdata.data.menus.topbarMenu.menuItems
+
+function HomeIcon(props) {
+    return (
+        <SvgIcon {...props}>
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </SvgIcon>
+    )
+}
 
 function Logo(props) {
     return (
@@ -188,6 +200,14 @@ const useStyles = makeStyles((theme: Theme) =>
                 backgroundColor: "transparent",
             },
         },
+        themeSwither: {
+            marginTop: "0.2em",
+            transition: "all 500ms linear, border-bottom 500ms linear",
+            opacity: "0.7",
+            "&:hover": {
+                opacity: 1,
+            },
+        },
     })
 )
 
@@ -197,11 +217,13 @@ const TopbarHeadroom = (props) => {
         toggleSidebar,
         resizeOnScroll,
         backgroundIsDark,
+        handleThemeChange,
         ...rest
     } = props
 
     const classes = useStyles()
     const theme = useTheme()
+    const isDarkTheme = theme.palette.type === "dark"
     const router = useRouter()
 
     const [notifications, setNotifications] = useState(23)
@@ -276,6 +298,7 @@ const TopbarHeadroom = (props) => {
                                 resizeOnScroll={resizeOnScroll}
                             />
                         </Hidden>
+
                         {router.locales
                             .filter((locale) => locale !== lang)
                             .map((locale) => (
@@ -294,6 +317,35 @@ const TopbarHeadroom = (props) => {
                                     {locale.toUpperCase()}
                                 </Button>
                             ))}
+                        {handleThemeChange ? (
+                            // <Switch
+                            //     checked={isDarkTheme}
+                            //     onChange={handleThemeChange}
+                            // />
+                            <div
+                                onClick={handleThemeChange}
+                                style={{ color: "violet" }}
+                            >
+                                {isDarkTheme ? (
+                                    <Brightness5SharpIcon
+                                        className={classes.themeSwither}
+                                        style={{
+                                            // fontSize: 24,
+                                            color: "#eee",
+                                        }}
+                                    />
+                                ) : (
+                                    <Brightness4SharpIcon
+                                        className={classes.themeSwither}
+                                        style={{
+                                            // fontSize: 24,
+                                            color: "#555",
+                                        }}
+                                    />
+                                )}
+                            </div>
+                        ) : null}
+
                         {/* <Hidden mdDown>
                             <IconButton
                                 className={classes.notificationButton}

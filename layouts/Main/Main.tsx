@@ -60,7 +60,13 @@ function ScrollTop(props) {
 }
 
 const Main = (props) => {
-    const { children, lang, backgroundIsDark, pageSpacing } = props
+    const {
+        children,
+        lang,
+        backgroundIsDark,
+        pageSpacing,
+        handleThemeChange,
+    } = props
 
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
@@ -158,6 +164,7 @@ const Main = (props) => {
                 toggleSidebar={toggleSidebar}
                 backgroundIsDark={!!backgroundIsDark}
                 className={classes.headroomWrapper}
+                handleThemeChange={handleThemeChange}
             />
             <Sidebar
                 toggleSidebar={toggleSidebar}
