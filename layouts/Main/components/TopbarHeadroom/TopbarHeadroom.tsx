@@ -61,156 +61,6 @@ function Logo(props) {
     )
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            backgroundColor: tbs.backgroundColor,
-            //backgroundColor: "transparent", // needs to be transparent for ReactHeadroom colors to work
-            boxShadow: tbs.boxShadow,
-            justifyContent: "center",
-        },
-        logo: {
-            position: "absolute",
-            color: tbs.logoColor,
-            cursor: "pointer",
-            // textDecoration: "none !important",
-            // fontSize: "1rem",
-            // fontWeight: 700,
-            // textTransform: "uppercase",
-            // letterSpacing: "0.1rem",
-            // // marginBottom: "-5.818px",
-            // padding: "0",
-
-            width: `${toolbarHeight}px`,
-            height: `${toolbarHeight}px`,
-            marginLeft: "16px",
-            [theme.breakpoints.up("sm")]: {
-                width: `${toolbarHeightSmUp}px`,
-                height: `${toolbarHeightSmUp}px`,
-            },
-            [theme.breakpoints.up("lg")]: {
-                marginLeft: 0,
-            },
-            transition: "all 300ms ease-in-out",
-        },
-        flexGrow: {
-            flexGrow: 1,
-        },
-        signOutButton: {
-            marginLeft: theme.spacing(1),
-            backgroundColor: "tomato",
-        },
-        notificationButton: {
-            marginLeft: theme.spacing(1),
-            backgroundColor: "tomato",
-        },
-
-        langSwitcherButton: {
-            color: tbs.langSwitcherButtonColor,
-            "&:hover": {
-                backgroundColor: tbs.langSwitcherButtonHoverBackgroundColor,
-                outline: tbs.langSwitcherButtonHoverOutline,
-                color: tbs.langSwitcherButtonHoverColor,
-            },
-            "& .MuiButton-label": {
-                letterSpacing: "0.02rem",
-            },
-            transition: "color 500ms linear",
-        },
-        langSwitcherButtonPinned: {
-            color: tbs.langSwitcherButtonPinnedColor,
-            transition: "color 100ms linear",
-        },
-        toolbar: {
-            height: `${toolbarHeight}`,
-            [theme.breakpoints.up("sm")]: {
-                height: `${toolbarHeightSmUp}`,
-            },
-        },
-        headroom: {
-            "& .headroom": {
-                transition:
-                    "background-color 500ms linear, border-bottom 500ms linear",
-                backgroundColor: tbs.backgroundColor,
-                borderBottom: tbs.borderBottom,
-                position: "fixed",
-                width: "100%",
-                zIndex: 15,
-            },
-            "& .headroom--pinned": {
-                backgroundColor: tbs.pinnedBackgroundColor,
-                borderBottom: tbs.pinnedBorderBottom,
-            },
-        },
-        headroomResizeOnScroll: {
-            "& .headroom": {
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 5,
-                // zIndex: 1,
-                transition:
-                    "all 500ms linear,background-color 500ms linear, border-bottom 500ms linear",
-                // backgroundColor: tbs.backgroundColor,
-                backgroundColor: "#eee",
-                borderBottom: tbs.borderBottom,
-                position: "fixed",
-                width: "100%",
-                boxShadow: "0 0 3px 3px rgba(175, 175, 175, 0.5)",
-            },
-
-            "& .headroom--unfixed": {
-                backgroundColor: "transparent",
-                boxShadow: "none",
-                // height: "80px",
-                // position: "relative",
-                // transform: "translateY(0)",
-                transition: "all 300ms ease-in-out",
-                "& $logo": {
-                    color: "maroon",
-                },
-            },
-
-            "& .headroom--scrolled": {
-                // backgroundColor: "yellow",
-                transition: "transform 200ms ease-in-out",
-            },
-
-            "& .headroom--unpinned": {
-                position: "fixed",
-                // transform: "translateY(-100%)",
-            },
-
-            "& .headroom--pinned": {
-                // backgroundColor: tbs.pinnedBackgroundColor,
-                // backgroundColor: "lime",
-                borderBottom: tbs.pinnedBorderBottom,
-            },
-        },
-        drawerIcon: {
-            color: tbs.burgerColor,
-            marginRight: "0.9rem",
-            marginLeft: "0.9rem",
-            height: "28px",
-            width: "28px",
-        },
-        drawerIconContainer: {
-            paddingRight: 0,
-            "&:hover": {
-                backgroundColor: "transparent",
-            },
-        },
-        themeSwither: {
-            marginTop: "0.2em",
-            transition: "all 500ms linear, border-bottom 500ms linear",
-            opacity: "0.7",
-            "&:hover": {
-                opacity: 1,
-            },
-        },
-    })
-)
-
 const TopbarHeadroom = (props) => {
     const {
         className,
@@ -221,7 +71,6 @@ const TopbarHeadroom = (props) => {
         ...rest
     } = props
 
-    const classes = useStyles()
     const theme = useTheme()
     const isDarkTheme = theme.palette.type === "dark"
     const router = useRouter()
@@ -232,15 +81,174 @@ const TopbarHeadroom = (props) => {
 
     const [isTop, setIsTop] = useState(true)
 
-    const headroomStyles = clsx({
-        [classes.headroom]: !resizeOnScroll,
-        [classes.headroomResizeOnScroll]: resizeOnScroll,
-    })
-
     const setTopFalse = () => {
         if (!top) return
         setIsTop(false)
     }
+
+    const themeSwitherColor =
+        (resizeOnScroll && (backgroundIsDark || isDarkTheme) && isTop) ||
+        (!resizeOnScroll && (backgroundIsDark || !isTop || isDarkTheme))
+            ? tbs.mainNavigationLinkColorBgDark
+            : tbs.mainNavigationLinkColor
+
+    const useStyles = makeStyles((theme: Theme) =>
+        createStyles({
+            root: {
+                backgroundColor: tbs.backgroundColor,
+                //backgroundColor: "transparent", // needs to be transparent for ReactHeadroom colors to work
+                boxShadow: tbs.boxShadow,
+                justifyContent: "center",
+            },
+            logo: {
+                position: "absolute",
+                color: tbs.logoColor,
+                cursor: "pointer",
+                // textDecoration: "none !important",
+                // fontSize: "1rem",
+                // fontWeight: 700,
+                // textTransform: "uppercase",
+                // letterSpacing: "0.1rem",
+                // // marginBottom: "-5.818px",
+                // padding: "0",
+
+                width: `${toolbarHeight}px`,
+                height: `${toolbarHeight}px`,
+                marginLeft: "16px",
+                [theme.breakpoints.up("sm")]: {
+                    width: `${toolbarHeightSmUp}px`,
+                    height: `${toolbarHeightSmUp}px`,
+                },
+                [theme.breakpoints.up("lg")]: {
+                    marginLeft: 0,
+                },
+                transition: "all 300ms ease-in-out",
+            },
+            flexGrow: {
+                flexGrow: 1,
+            },
+            signOutButton: {
+                marginLeft: theme.spacing(1),
+                backgroundColor: "tomato",
+            },
+            notificationButton: {
+                marginLeft: theme.spacing(1),
+                backgroundColor: "tomato",
+            },
+
+            langSwitcherButton: {
+                color: tbs.langSwitcherButtonColor,
+                "&:hover": {
+                    backgroundColor: tbs.langSwitcherButtonHoverBackgroundColor,
+                    outline: tbs.langSwitcherButtonHoverOutline,
+                    color: tbs.langSwitcherButtonHoverColor,
+                },
+                "& .MuiButton-label": {
+                    letterSpacing: "0.02rem",
+                },
+                transition: "color 500ms linear",
+            },
+            langSwitcherButtonPinned: {
+                color: tbs.langSwitcherButtonPinnedColor,
+                transition: "color 100ms linear",
+            },
+            toolbar: {
+                height: `${toolbarHeight}`,
+                [theme.breakpoints.up("sm")]: {
+                    height: `${toolbarHeightSmUp}`,
+                },
+            },
+            headroom: {
+                "& .headroom": {
+                    transition:
+                        "background-color 500ms linear, border-bottom 500ms linear",
+                    backgroundColor: tbs.backgroundColor,
+                    borderBottom: tbs.borderBottom,
+                    position: "fixed",
+                    width: "100%",
+                    zIndex: 15,
+                },
+                "& .headroom--pinned": {
+                    backgroundColor: tbs.pinnedBackgroundColor,
+                    borderBottom: tbs.pinnedBorderBottom,
+                },
+            },
+            headroomResizeOnScroll: {
+                "& .headroom": {
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 5,
+                    // zIndex: 1,
+                    transition:
+                        "all 500ms linear,background-color 500ms linear, border-bottom 500ms linear",
+                    // backgroundColor: tbs.backgroundColor,
+                    backgroundColor: "#eee",
+                    borderBottom: tbs.borderBottom,
+                    position: "fixed",
+                    width: "100%",
+                    boxShadow: "0 0 3px 3px rgba(175, 175, 175, 0.5)",
+                },
+
+                "& .headroom--unfixed": {
+                    backgroundColor: "transparent",
+                    boxShadow: "none",
+                    // height: "80px",
+                    // position: "relative",
+                    // transform: "translateY(0)",
+                    transition: "all 300ms ease-in-out",
+                    "& $logo": {
+                        color: "maroon",
+                    },
+                },
+
+                "& .headroom--scrolled": {
+                    // backgroundColor: "yellow",
+                    transition: "transform 200ms ease-in-out",
+                },
+
+                "& .headroom--unpinned": {
+                    position: "fixed",
+                    // transform: "translateY(-100%)",
+                },
+
+                "& .headroom--pinned": {
+                    // backgroundColor: tbs.pinnedBackgroundColor,
+                    // backgroundColor: "lime",
+                    borderBottom: tbs.pinnedBorderBottom,
+                },
+            },
+            drawerIcon: {
+                color: tbs.burgerColor,
+                marginRight: "0.9rem",
+                marginLeft: "0.9rem",
+                height: "28px",
+                width: "28px",
+            },
+            drawerIconContainer: {
+                paddingRight: 0,
+                "&:hover": {
+                    backgroundColor: "transparent",
+                },
+            },
+            themeSwither: {
+                color: themeSwitherColor,
+                marginTop: "0.2em",
+                transition: "all 500ms linear, border-bottom 300ms linear",
+                opacity: "0.7",
+                "&:hover": {
+                    opacity: 1,
+                },
+            },
+        })
+    )
+
+    const classes = useStyles()
+
+    const headroomStyles = clsx({
+        [classes.headroom]: !resizeOnScroll,
+        [classes.headroomResizeOnScroll]: resizeOnScroll,
+    })
 
     return (
         <Headroom
@@ -322,25 +330,16 @@ const TopbarHeadroom = (props) => {
                             //     checked={isDarkTheme}
                             //     onChange={handleThemeChange}
                             // />
-                            <div
-                                onClick={handleThemeChange}
-                                style={{ color: "violet" }}
-                            >
+                            <div onClick={handleThemeChange}>
                                 {isDarkTheme ? (
                                     <Brightness5SharpIcon
                                         className={classes.themeSwither}
-                                        style={{
-                                            // fontSize: 24,
-                                            color: "#eee",
-                                        }}
+                                        color="inherit"
                                     />
                                 ) : (
                                     <Brightness4SharpIcon
                                         className={classes.themeSwither}
-                                        style={{
-                                            // fontSize: 24,
-                                            color: "#555",
-                                        }}
+                                        color="inherit"
                                     />
                                 )}
                             </div>

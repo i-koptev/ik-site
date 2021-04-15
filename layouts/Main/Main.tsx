@@ -154,18 +154,19 @@ const Main = (props) => {
             })}
         >
             <div id="back-to-top-anchor" />
-            {/* <TopbarHeadroom
+            <TopbarHeadroom
                 toggleSidebar={toggleSidebar}
                 backgroundIsDark={!!backgroundIsDark}
                 resizeOnScroll
                 className={classes.headroomWrapper}
-            /> */}
-            <TopbarHeadroom
+                handleThemeChange={handleThemeChange}
+            />
+            {/* <TopbarHeadroom
                 toggleSidebar={toggleSidebar}
                 backgroundIsDark={!!backgroundIsDark}
                 className={classes.headroomWrapper}
                 handleThemeChange={handleThemeChange}
-            />
+            /> */}
             <Sidebar
                 toggleSidebar={toggleSidebar}
                 open={shouldOpenSidebar}
