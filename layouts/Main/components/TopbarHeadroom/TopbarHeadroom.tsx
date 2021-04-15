@@ -20,6 +20,7 @@ import InputIcon from "@material-ui/icons/Input"
 
 import Link from "../../../../components/Link"
 import TwoDimentionalMenu from "./components/TwoDimentionalMenu"
+import DropdownMenu from "./components/DropdownMenu"
 import { toolbarHeight } from "../../../../theme/sharedStyles"
 import { toolbarHeightSmUp } from "../../../../theme/sharedStyles"
 
@@ -70,9 +71,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
             width: `${toolbarHeight}px`,
             height: `${toolbarHeight}px`,
+            marginLeft: "16px",
             [theme.breakpoints.up("sm")]: {
                 width: `${toolbarHeightSmUp}px`,
                 height: `${toolbarHeightSmUp}px`,
+            },
+            [theme.breakpoints.up("lg")]: {
+                marginLeft: 0,
             },
             transition: "all 300ms ease-in-out",
         },
@@ -231,8 +236,7 @@ const TopbarHeadroom = (props) => {
                 className={clsx(classes.root, className)}
                 position="static"
             >
-                {/* <Container maxWidth={theme.siteContainer.maxWidth}> */}
-                <Container maxWidth={siteContainerWidth}>
+                <Container maxWidth={siteContainerWidth} disableGutters>
                     <Toolbar
                         component="nav"
                         disableGutters
@@ -259,7 +263,13 @@ const TopbarHeadroom = (props) => {
                         {/* </Link> */}
                         <div className={classes.flexGrow} />
                         <Hidden smDown>
-                            <TwoDimentionalMenu
+                            {/* <TwoDimentionalMenu
+                                menuItems={menuItems}
+                                backgroundIsDark={backgroundIsDark}
+                                isTop={isTop}
+                                resizeOnScroll={resizeOnScroll}
+                            /> */}
+                            <DropdownMenu
                                 menuItems={menuItems}
                                 backgroundIsDark={backgroundIsDark}
                                 isTop={isTop}
@@ -306,16 +316,16 @@ const TopbarHeadroom = (props) => {
                                 <InputIcon />
                             </IconButton>
                         </Hidden> */}
-                        {/* <Hidden lgUp> */}
-                        <IconButton
-                            className={classes.drawerIconContainer}
-                            color="inherit"
-                            onClick={toggleSidebar(true)}
-                            disableRipple
-                        >
-                            <MenuIcon className={classes.drawerIcon} />
-                        </IconButton>
-                        {/* </Hidden> */}
+                        <Hidden lgUp>
+                            <IconButton
+                                className={classes.drawerIconContainer}
+                                color="inherit"
+                                onClick={toggleSidebar(true)}
+                                disableRipple
+                            >
+                                <MenuIcon className={classes.drawerIcon} />
+                            </IconButton>
+                        </Hidden>
                     </Toolbar>
                 </Container>
             </AppBar>

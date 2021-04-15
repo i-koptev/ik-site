@@ -12,7 +12,7 @@ import MainLayout from "../layouts/Main"
 
 import { siteContainerWidth } from "../theme/sharedStyles"
 
-const pageSpacing = 4
+const pageSpacing = 4 // used as a grid container spacing and as a ratio to compensate first child section padding? overlapping
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
             marginBottom: `${pageSpacing * 4}px`, // compensate following section Grid item paddings determined by Grid container spacing {amount}
         },
         heroSection: {
-            minHeight: "30vh",
+            // minHeight: "30vh",
             [theme.breakpoints.up("sm")]: {
-                minHeight: "50vh",
+                // minHeight: "50vh",
             },
             alignContent: " center",
             textAlign: "center",
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
             [theme.breakpoints.up("md")]: {
                 fontSize: "8rem",
             },
-            marginBottom: "0.5em",
+            marginBottom: "0.35em",
             lineHeight: 1.167,
             letterSpacing: "-0.01562em",
             color: "white",
@@ -55,13 +55,17 @@ const useStyles = makeStyles((theme: Theme) =>
             marginBottom: `${pageSpacing * 4}px`, // compensate following section Grid item paddings - comment to decrease spacing between sections
             backgroundColor: "teal",
         },
+        sectionContent: {
+            paddingTop: "1em",
+            paddingBottom: "1em",
+        },
     })
 )
 
 const Contacts = () => {
     const classes = useStyles()
     return (
-        <MainLayout backgroundIsDark>
+        <MainLayout backgroundIsDark pageSpacing={pageSpacing}>
             <section
                 className={clsx(
                     "mainLayoutFirstChild",
@@ -83,6 +87,9 @@ const Contacts = () => {
                 </Container>
             </section>
             <section className={classes.sectionWrapper}>
+                {/* <section
+                className={clsx("mainLayoutFirstChild", classes.sectionWrapper)}
+            > */}
                 <Container
                     maxWidth={siteContainerWidth}
                     style={{ backgroundColor: "#123", color: "#eee" }}
@@ -90,10 +97,7 @@ const Contacts = () => {
                     <Grid
                         container
                         spacing={pageSpacing}
-                        style={{
-                            paddingTop: "2rem",
-                            paddingBottom: "2rem",
-                        }}
+                        className={classes.sectionContent}
                     >
                         <Grid item sm={6}>
                             Contacts Lorem ipsum dolor sit amet, consectetur
@@ -144,7 +148,11 @@ const Contacts = () => {
                     maxWidth={siteContainerWidth}
                     style={{ backgroundColor: "tomato" }}
                 >
-                    <Grid container spacing={pageSpacing}>
+                    <Grid
+                        container
+                        spacing={pageSpacing}
+                        className={classes.sectionContent}
+                    >
                         <Grid item sm={12}>
                             Contacts Lorem ipsum dolor sit amet, consectetur
                             adipisicing elit. Officiis animi, eligendi aliquam
@@ -158,6 +166,44 @@ const Contacts = () => {
                             adipisci excepturi necessitatibus. Odio harum, ea
                             sequi laboriosam molestiae voluptatibus, eius
                             possimus itaque quaerat obcaecati libero
+                            reprehenderit. Quam doloribus, reiciendis iusto
+                            consequatur libero deleniti, numquam eum enim
+                            commodi possimus suscipit laudantium aliquam quo
+                            ducimus odio at magnam accusamus eveniet laborum.
+                            Eligendi eius soluta ab.
+                        </Grid>{" "}
+                        <Grid item sm={6}>
+                            Contacts Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Officiis animi, eligendi aliquam
+                            cupiditate error nostrum beatae! Hic pariatur
+                            tempora voluptatem ea, recusandae nemo cumque optio,
+                            dolores omnis laboriosam repellat cupiditate veniam,
+                            ipsam maiores temporibus. Velit magni porro fuga
+                            esse eos quos repudiandae eligendi vel molestias,
+                            quia neque ratione consequuntur. Mollitia error
+                            magnam aperiam saepe sapiente exercitationem
+                            adipisci excepturi necessitatibus. Odio harum, ea
+                            sequi laboriosam molestiae voluptatibus, eius
+                            possimus itaque quaerat obcaecati libero
+                            reprehenderit. Quam doloribus, reiciendis iusto
+                            consequatur libero deleniti, numquam eum enim
+                            commodi possimus suscipit laudantium aliquam quo
+                            ducimus odio at magnam accusamus eveniet laborum.
+                            Eligendi eius soluta ab.
+                        </Grid>{" "}
+                        <Grid item sm={6}>
+                            Contacts Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Officiis animi, eligendi aliquam
+                            cupiditate error nostrum beatae! Hic pariatur
+                            tempora voluptatem ea, recusandae nemo cumque optio,
+                            dolores omnis laboriosam repellat cupiditate veniam,
+                            ipsam maiores temporibus. Velit magni porro fuga
+                            esse eos quos repudiandae eligendi vel molestias,
+                            quia neque ratione consequuntur. Mollitia error
+                            magnam aperiam saepe sapiente exercitationem
+                            adipisci excepturi necessitatibus. Odio harum, ea
+                            sequi laboriosam molestiae voluptatibus, eius
+                            possimus itaque quaerat lorem500 obcaecati libero
                             reprehenderit. Quam doloribus, reiciendis iusto
                             consequatur libero deleniti, numquam eum enim
                             commodi possimus suscipit laudantium aliquam quo

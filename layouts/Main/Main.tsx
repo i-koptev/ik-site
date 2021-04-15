@@ -20,57 +20,8 @@ import { Sidebar, TopbarHeadroom, Footer } from "./components"
 import { toolbarHeight } from "../../theme/sharedStyles"
 import { toolbarHeightSmUp } from "../../theme/sharedStyles"
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        rootHeight: {
-            height: "100%",
-        },
-        shiftContent: {
-            paddingLeft: 290,
-        },
-        content: {
-            height: "100%",
-        },
-        fab: {
-            width: "48px",
-            height: "48px",
-            borderRadius: "7px",
-            [theme.breakpoints.up("sm")]: {
-                width: "56px",
-                height: "56px",
-            },
-            opacity: 0.8,
-
-            color: "#777",
-            "&:hover": {
-                opacity: 1,
-                color: "black",
-            },
-        },
-        headroomWrapper: {
-            height: `${toolbarHeight}px`,
-            [theme.breakpoints.up("sm")]: {
-                height: `${toolbarHeightSmUp}px`,
-            },
-        },
-        childrenWrapper: {
-            marginTop: `-${toolbarHeight + 1}px`,
-            [theme.breakpoints.up("sm")]: {
-                marginTop: `-${toolbarHeightSmUp + 1}px`,
-            },
-            "& .mainLayoutFirstChild": {
-                paddingTop: `${toolbarHeight + 1}px`, //1px - for marginBottom
-                [theme.breakpoints.up("sm")]: {
-                    paddingTop: `${toolbarHeightSmUp + 1}px`, //1px - for marginBottom
-                },
-            },
-        },
-    })
-)
-
 function ScrollTop(props) {
     const { children, window } = props
-    const classes = useStyles()
     // Material UI docs:
     // Note that you normally won't need to set the window ref as useScrollTrigger
     // will default to window.
@@ -109,7 +60,59 @@ function ScrollTop(props) {
 }
 
 const Main = (props) => {
-    const { children, lang, backgroundIsDark } = props
+    const { children, lang, backgroundIsDark, pageSpacing } = props
+
+    const useStyles = makeStyles((theme: Theme) =>
+        createStyles({
+            rootHeight: {
+                height: "100%",
+            },
+            shiftContent: {
+                paddingLeft: 290,
+            },
+            content: {
+                height: "100%",
+            },
+            fab: {
+                width: "48px",
+                height: "48px",
+                borderRadius: "7px",
+                [theme.breakpoints.up("sm")]: {
+                    width: "56px",
+                    height: "56px",
+                },
+                opacity: 0.8,
+
+                color: "#777",
+                "&:hover": {
+                    opacity: 1,
+                    color: "black",
+                },
+            },
+            headroomWrapper: {
+                height: `${toolbarHeight}px`,
+                [theme.breakpoints.up("sm")]: {
+                    height: `${toolbarHeightSmUp}px`,
+                },
+            },
+            childrenWrapper: {
+                marginTop: `-${toolbarHeight + 1}px`,
+                [theme.breakpoints.up("sm")]: {
+                    marginTop: `-${toolbarHeightSmUp + 1}px`,
+                },
+                "& .mainLayoutFirstChild": {
+                    paddingTop: `${toolbarHeight + 1 + pageSpacing * 4}px`, //1px - for headroom's borderBottom, 16px  - for headroom's marginBottom
+                    // paddingTop: `${toolbarHeight + 1}px`, //1px - for headroom's borderBottom
+                    [theme.breakpoints.up("sm")]: {
+                        paddingTop: `${
+                            toolbarHeightSmUp + 1 + pageSpacing * 4
+                        }px`, //1px - for headroom's borderBottom, 16px  - for headroom's marginBottom
+                        // paddingTop: `${toolbarHeightSmUp + 1}px`, //1px - for headroom's borderBottom
+                    },
+                },
+            },
+        })
+    )
 
     const classes = useStyles()
     const theme = useTheme()
