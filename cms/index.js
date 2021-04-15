@@ -147,7 +147,7 @@ export default {
                         {
                             key: "1003",
                             parentId: 1002,
-                            url: "/design",
+                            url: "/dark",
                             title: {
                                 ru: "Дизайн",
                                 en: "Design",
