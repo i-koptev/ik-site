@@ -36,6 +36,46 @@ export default {
                             },
                         },
                         {
+                            key: "12121",
+                            parentId: 12,
+                            url: "/about",
+                            title: {
+                                ru: "О нас",
+                                en: "About Us",
+                                lv: "Par mums",
+                            },
+                        },
+                        {
+                            key: "12122",
+                            parentId: 12,
+                            url: "/about",
+                            title: {
+                                ru: "О нас",
+                                en: "About Us",
+                                lv: "Par mums",
+                            },
+                        },
+                        {
+                            key: "12123",
+                            parentId: 12,
+                            url: "/about",
+                            title: {
+                                ru: "О нас",
+                                en: "About Us",
+                                lv: "Par mums",
+                            },
+                        },
+                        {
+                            key: "12124",
+                            parentId: 12,
+                            url: "/about",
+                            title: {
+                                ru: "О нас",
+                                en: "About Us",
+                                lv: "Par mums",
+                            },
+                        },
+                        {
                             key: "13",
                             parentId: null,
                             url: "/services",
