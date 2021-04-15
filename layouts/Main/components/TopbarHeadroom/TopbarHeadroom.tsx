@@ -316,7 +316,7 @@ const TopbarHeadroom = (props) => {
                                 <InputIcon />
                             </IconButton>
                         </Hidden> */}
-                        <Hidden lgUp>
+                        <Hidden mdUp>
                             <IconButton
                                 className={classes.drawerIconContainer}
                                 color="inherit"
