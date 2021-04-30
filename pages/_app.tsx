@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Head from "next/head"
 import { AppProps } from "next/app"
 
+import { ProvideAuth } from "../lib/auth"
 import { ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 // import theme from "../theme"
@@ -40,14 +41,16 @@ export default function MyApp(props: AppProps) {
                 />
             </Head>
             {/* <ThemeProvider theme={theme}> */}
-            <ThemeProvider theme={currentTheme}>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-                <CssBaseline />
-                <Component
-                    {...pageProps}
-                    handleThemeChange={handleThemeChange}
-                />
-            </ThemeProvider>
+            <ProvideAuth>
+                <ThemeProvider theme={currentTheme}>
+                    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                    <CssBaseline />
+                    <Component
+                        {...pageProps}
+                        handleThemeChange={handleThemeChange}
+                    />
+                </ThemeProvider>
+            </ProvideAuth>
         </React.Fragment>
     )
 }

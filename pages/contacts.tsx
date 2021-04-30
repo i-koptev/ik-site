@@ -1,3 +1,5 @@
+// import auth from "firebase"
+import { useAuth } from "../lib/auth"
 import clsx from "clsx"
 import {
     Theme,
@@ -63,6 +65,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const Contacts = (props) => {
+    const auth = useAuth()
     const { handleThemeChange } = props
     const theme = useTheme()
     const isDarkTheme = theme.palette.type === "dark"
@@ -111,6 +114,10 @@ const Contacts = (props) => {
                         className={classes.sectionContent}
                     >
                         <Grid item sm={6}>
+                            <h3>{auth.user}</h3>
+                            <button onClick={(e) => auth.signinWithGithub}>
+                                Sign in
+                            </button>
                             Contacts Lorem ipsum dolor sit amet, consectetur
                             adipisicing elit. Officiis animi, eligendi aliquam
                             cupiditate error nostrum beatae! Hic pariatur
