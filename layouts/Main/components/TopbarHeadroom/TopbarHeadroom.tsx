@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
+import { useAuth } from "../../../../lib/use-auth"
 import useTranslation from "next-translate/useTranslation"
 import Headroom from "react-headroom"
 import clsx from "clsx"
@@ -70,6 +71,8 @@ const TopbarHeadroom = (props) => {
         handleThemeChange,
         ...rest
     } = props
+
+    const auth = useAuth()
 
     const theme = useTheme()
     const isDarkTheme = theme.palette.type === "dark"
@@ -325,6 +328,33 @@ const TopbarHeadroom = (props) => {
                                     {locale.toUpperCase()}
                                 </Button>
                             ))}
+                        {auth.user ? (
+                            <>
+                                <Link
+                                    href="/account"
+                                    style={{ color: "white" }}
+                                >
+                                    Account ({auth.user.email})
+                                </Link>
+                                <button onClick={(e) => auth.signout()}>
+                                    Log out
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={(e) => auth.signinWithGithub()}
+                                >
+                                    Github
+                                </button>
+                                <button
+                                    onClick={(e) => auth.signinWithGoogle()}
+                                >
+                                    Google
+                                </button>
+                            </>
+                        )}
+
                         {handleThemeChange ? (
                             // <Switch
                             //     checked={isDarkTheme}
