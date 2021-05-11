@@ -1,4 +1,6 @@
 import { useAuth } from "../lib/use-auth"
+import useSWR from "swr"
+import axios from "axios"
 import { signIn } from "../lib/wAuth/signIn"
 import clsx from "clsx"
 import {
@@ -64,8 +66,11 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
+const fetcher = (url) => axios.get(url).then((res) => res.data)
+
 const Contacts = (props) => {
     const auth = useAuth()
+    const { data, error } = useSWR("/api/posts", fetcher)
     console.log(auth.user)
     const { handleThemeChange } = props
     const theme = useTheme()
@@ -115,6 +120,14 @@ const Contacts = (props) => {
                         className={classes.sectionContent}
                     >
                         <Grid item sm={6}>
+                            {!auth.user ? (
+                                <div>Loading posts...</div>
+                            ) : (
+                                <div>
+                                    Here they are...
+                                    <pre>{JSON.stringify(data, null, 4)}</pre>
+                                </div>
+                            )}
                             {auth.user ? (
                                 <pre>{JSON.stringify(auth?.user, null, 2)}</pre>
                             ) : null}
